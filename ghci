@@ -1,0 +1,12 @@
+:set +m
+:set +s
+:set +t
+:set editor vim
+:set prompt "> "
+:set -fwarn-incomplete-patterns
+
+:module +Data.List Data.Char
+
+import qualified Data.Map as Map
+import qualified Data.Set as Set
+

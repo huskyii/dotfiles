@@ -60,6 +60,10 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'kchmck/vim-coffee-script'
 " Clojure lang support
 Plugin 'VimClojure'
+" Ruby lang support
+Plugin 'vim-ruby/vim-ruby'
+" Ruby on Rails power tools
+Plugin 'tpope/vim-rails'
 " Markdown support
 Plugin 'tpope/vim-markdown'
 " Quoting/parenthesizing made simple

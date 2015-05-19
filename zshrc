@@ -27,6 +27,9 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Haskell path
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
+# Anaconda path
+#export PATH="$HOME/anaconda/bin/:$PATH"
+
 export EDITOR='vim'
 
 export LANG=en_US.UTF-8

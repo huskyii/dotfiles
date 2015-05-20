@@ -7,8 +7,6 @@ ZSH_THEME="miloshadzic"
 
 DISABLE_AUTO_TITLE="true"
 
-ENABLE_CORRECTION="true"
-
 export UPDATE_ZSH_DAYS=7
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"

@@ -53,17 +53,11 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 " improved Haskell syntax highlighting
 Plugin 'haskell.vim'
 " Rust lang support
-Plugin 'wting/rust.vim'
+"Plugin 'wting/rust.vim'
 " Elixir lang support
 Plugin 'elixir-lang/vim-elixir'
 " CoffeeScript lang support
 Plugin 'kchmck/vim-coffee-script'
-" Clojure lang support
-"Plugin 'VimClojure'
-" Ruby lang support
-"Plugin 'vim-ruby/vim-ruby'
-" Ruby on Rails power tools
-"Plugin 'tpope/vim-rails'
 " Markdown support
 Plugin 'tpope/vim-markdown'
 " Quoting/parenthesizing made simple
@@ -98,8 +92,8 @@ colorscheme Tomorrow-Night-Bright
 if &t_Co > 2 || has("gui_running")
   syntax on
 endif
-" 2 lines above/below cursor when scrolling
-set scrolloff=2
+" 6 lines above/below cursor when scrolling
+set scrolloff=6
 " show matching bracket (briefly jump)
 set showmatch
 " show mode in status bar (insert/replace/...)
@@ -121,9 +115,9 @@ set virtualedit=block,onemore
 " enforces a specified line-length and auto inserts hard line breaks when we
 " reach the limit; in Normal mode, you can reformat the current paragraph with
 " gqap.
-set textwidth=80
+"set textwidth=100
 " this makes the color after the textwidth column highlighted
-set colorcolumn=+1
+"set colorcolumn=+1
 
 
 " EDITOR SETTINGS
@@ -213,18 +207,26 @@ if exists("+undofile")
   set undofile
 endif
 
+" tmux integration
+if exists('$TMUX')
+  set term=screen-256color
+endif
+" cursor shape in tmux
+if exists('$ITERM_PROFILE')
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[0 q"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+end
+
 " auto remove all trailing whitespace in all files
 autocmd BufWritePre * :%s/\s\+$//e
 
 " indent for python source file
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
-
-" highlight TODO and FIXME
-augroup HiglightTODO
-  autocmd!
-  autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
-  autocmd WinEnter,VimEnter * :silent! call matchadd('Fixme', 'FIXME', -1)
-augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

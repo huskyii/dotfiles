@@ -28,6 +28,10 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 # Anaconda path
 #export PATH="$HOME/anaconda/bin/:$PATH"
 
+# virtualenv-wrapper config
+export WORKON_HOME=~/.env
+source virtualenvwrapper.sh-2.7
+
 export EDITOR='vim'
 
 export LANG=en_US.UTF-8
@@ -40,4 +44,17 @@ export set_title(){
    echo -ne "\033]0;$1\007"
 }
 
-alias cc="clang++ -std=c++1y"
+# config shorthand
+alias config_zsh="vim ~/.zshrc"
+alias config_vim="vim ~/.vimrc"
+alias config_tmux="vim ~/.tmux.conf"
+alias config_macports="sudo vim /opt/local/etc/macports/macports.conf"
+alias config_emacs="emacs ~/.emacs"
+
+alias cdtmp="cd /tmp"
+alias cdws="cd ~/Workspace"
+alias cdlab="cd ~/Workspace/laboratory"
+alias cdcourse="cd ~/Documents/Courses"
+
+alias clang-format="clang-format -style=llvm"
+

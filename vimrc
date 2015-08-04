@@ -22,20 +22,16 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 " syntax checking hacks for vim
 Plugin 'scrooloose/syntastic'
-" fast navigation between .c/.cpp and .h
-Plugin 'vim-scripts/a.vim'
-" You Complete Me
-Plugin 'Valloric/YouCompleteMe'
+" Quoting/parenthesizing made simple
+Plugin 'tpope/vim-surround'
 " vim plugin for ack
 Plugin 'mileszs/ack.vim'
-" emmet for vim
-Plugin 'mattn/emmet-vim'
+" Dash integration
+Plugin 'rizzatti/dash.vim'
 " Interactive command execution in vim
 Plugin 'Shougo/vimproc.vim'
 " perform all your vim insert mode completions with Tab
 Plugin 'ervandew/supertab'
-" the ultimate snippet solution for Vim
-Plugin 'SirVer/ultisnips'
 " powerline plugin makes vim's status bar beautiful
 Plugin 'bling/vim-airline'
 " fast file navigation
@@ -46,26 +42,22 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'godlygeek/tabular'
 " all trailing whitespace to be highlighted in red
 Plugin 'bronson/vim-trailing-whitespace'
+" fast navigation between .c/.cpp and .h
+Plugin 'vim-scripts/a.vim'
+" C/C++ code-completion engine
+Plugin 'Valloric/YouCompleteMe'
 " improved C++11/14 STL syntax highlighting
 Plugin 'Mizuchi/STL-Syntax'
 " additional vim syntax highlighting for C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " improved Haskell syntax highlighting
 Plugin 'haskell.vim'
-" Rust lang support
-"Plugin 'wting/rust.vim'
 " Elixir lang support
 Plugin 'elixir-lang/vim-elixir'
-" CoffeeScript lang support
-Plugin 'kchmck/vim-coffee-script'
 " Markdown support
 Plugin 'tpope/vim-markdown'
-" Quoting/parenthesizing made simple
-Plugin 'tpope/vim-surround'
 " a better JSON for vim
 Plugin 'elzr/vim-json'
-" HTML5 omnicomplete and syntax
-Plugin 'othree/html5.vim'
 " molokai colorscheme
 Plugin 'tomasr/molokai'
 " tomorrow colorscheme
@@ -74,6 +66,8 @@ Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'altercation/vim-colors-solarized'
 " jellybeans colorscheme
 Plugin 'nanotech/jellybeans.vim'
+" Zenburn colorscheme
+Plugin 'jnurmine/Zenburn'
 
 " all of Plugins must be added before the following line
 call vundle#end()           " required by vundle
@@ -87,7 +81,7 @@ filetype plugin indent on
 
 
 " DISPLAY SETTINGS
-colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Eighties
 " Switch syntax highlighting on, when the terminal has colors
 if &t_Co > 2 || has("gui_running")
   syntax on
@@ -112,13 +106,6 @@ set cursorline
 set laststatus=2
 " allow cursor beyond last character
 set virtualedit=block,onemore
-" enforces a specified line-length and auto inserts hard line breaks when we
-" reach the limit; in Normal mode, you can reformat the current paragraph with
-" gqap.
-"set textwidth=100
-" this makes the color after the textwidth column highlighted
-"set colorcolumn=+1
-
 
 " EDITOR SETTINGS
 " case insensitive searching
@@ -164,7 +151,7 @@ if has('unnamedplus')
   " '+' (and this option makes Vim use it by default) and the selection one as
   " '*'.
   " See :h 'clipboard' for details.
-  set clipboard=unnamedplus,unnamed
+  set clipboard+=unnamedplus,unnamed
 else
   " Vim now also uses the selection system clipboard for default yank/paste.
   set clipboard+=unnamed
@@ -221,6 +208,9 @@ if exists('$ITERM_PROFILE')
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 end
+
+" turn on mouse support
+set mouse=a
 
 " auto remove all trailing whitespace in all files
 autocmd BufWritePre * :%s/\s\+$//e
@@ -287,21 +277,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'tomorrow'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                UltiSnips                                "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-" trigger configuration
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<up>"
-let g:UltiSnipsJumpBackwardTrigger = "<down>"
-" :UltiSnipsEdit will split window vertically
-let g:UltiSnipsEditSplit = "vertical"
-let g:snips_author = 'Jiang Zhu'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Rainbow Parentheses                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au VimEnter * RainbowParenthesesToggle
@@ -321,3 +296,11 @@ function! s:CloseIfOnlyNerdTreeLeft()
   endif
 endfunction
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            OCaml Support                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" opam install merlin
+if executable('ocamlmerlin') && has('python')
+  let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+  execute "set rtp+=" . g:opamshare . "/merlin/vim"
+endif

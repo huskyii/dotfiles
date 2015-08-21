@@ -1,10 +1,6 @@
-# Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="miloshadzic"
-#ZSH_THEME="jispwoso"
 
 DISABLE_AUTO_TITLE="true"
 
@@ -25,6 +21,9 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 # Anaconda path
 #export PATH="$HOME/anaconda/bin/:$PATH"
 
+# OPAM configuration
+. ~/.opam/opam-init/init.zsh
+
 # virtualenv-wrapper config
 export WORKON_HOME=~/.env
 source virtualenvwrapper.sh-2.7
@@ -40,9 +39,6 @@ export ARCHFLAGS="-arch x86_64"
 export set_title(){
    echo -ne "\033]0;$1\007"
 }
-
-# OPAM configuration
-. ~/.opam/opam-init/init.zsh
 
 # config shorthand
 alias config_zsh="vim ~/.zshrc"

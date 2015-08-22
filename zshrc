@@ -6,7 +6,7 @@ DISABLE_AUTO_TITLE="true"
 
 export UPDATE_ZSH_DAYS=7
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 plugins=(cabal git git-extras macports pip python npm osx sudo)
 

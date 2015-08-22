@@ -142,4 +142,5 @@ if executable('ocamlmerlin') && has('python')
   execute "set rtp+=" . g:opamshare . "/merlin/vim"
 endif
 
+catch
 endtry

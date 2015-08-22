@@ -6,6 +6,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'rking/ag.vim'
+Plugin 'thinca/vim-quickrun'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -22,7 +24,9 @@ Plugin 'raichoo/haskell-vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'fatih/vim-go'
 Plugin 'elzr/vim-json'
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'altercation/vim-colors-solarized'
@@ -58,8 +62,8 @@ set ignorecase          " case insensitive searching
 set smartcase           " but become case sensitive when you type uppercase characters
 
 " Folding
-set foldenable          " enable folding
-set foldmethod=indent   " fold based on indent level
+"set foldenable          " enable folding
+"set foldmethod=indent   " fold based on indent level
 nnoremap <space> za
 
 " Movement

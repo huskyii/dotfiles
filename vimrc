@@ -42,7 +42,6 @@ set shiftround
 set expandtab
 
 " UI Config
-colorscheme Tomorrow-Night-Eighties
 syntax on
 set ruler               " show cursor position in status bar
 set title               " show file in titlebar
@@ -103,6 +102,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd FileType Python setlocal shiftwidth=4 tabstop=4
 
+" for newly installed machine
+try
+colorscheme Tomorrow-Night-Eighties
+"""""""""""""""""""""""""""""
+
 " YouCompleteMe
 let g:ycm_warning_symbol = '⚠'
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -137,3 +141,5 @@ if executable('ocamlmerlin') && has('python')
   let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
   execute "set rtp+=" . g:opamshare . "/merlin/vim"
 endif
+
+endtry

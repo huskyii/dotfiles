@@ -97,6 +97,7 @@ set noswapfile
 set backspace=indent,eol,start
 
 set clipboard+=unnamedplus,unnamed
+set mouse=a
 
 autocmd BufWritePre * :%s/\s\+$//e
 
